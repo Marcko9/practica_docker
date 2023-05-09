@@ -6,8 +6,10 @@ import mongoose from 'mongoose';
 
 
 // Constants
-const hostname = '127.0.0.1';
-const port = 3000;
+// const hostname = '127.0.0.1';
+const hostname = 'usuarioDB';
+const hostname2 = 'userapp';
+const port = 8085;
 const router = express.Router();
 // App
 const app = express();
@@ -40,10 +42,12 @@ Your implementation here
 // // Connect to mongodb server
 // const MongoClient = require('mongodb').MongoClient;
 // /* Your url connection to mongodb container */
-const url = 'mongodb://127.0.0.1:27017/userDB';
+// const url = 'mongodb://127.0.0.1:27017/userDB';
+const url = `mongodb://${hostname}:27017/userDB`;
 try {
     await mongoose.connect(url);
     console.log('DB OK');
+    console.log(url);
 } catch (err) {
     console.log(err);
 }
@@ -230,7 +234,10 @@ If not found, do nothing. (204 No Content)
 If found, document deleted (200 OK) */
 // ...
 
-app.listen(port, hostname, () => {
+// app.listen(port, hostname, () => {
+//     console.log('Servidor OK');
+// });
+app.listen(port, hostname2, () => {
     console.log('Servidor OK');
 });
-console.log(`Running on http://${hostname}:${port}`);
+console.log(`Running on http://${hostname2}:${port}`);
